@@ -4,17 +4,16 @@ public class EmpWageBuilder {
 
 	private static final int FULLTIME = 1;
 	private static final int PARTTIME = 0;
-	private static final int WORKINGDAYS_PER_MONTH = 20;
-	private static final int WAGE_PER_HOUR = 20;
-	private static final int TOTALHOURS = 100;
 
-	public static void get_EmployeeWage() {
-		int workingHours = 8;
-		int monthlyWage = 0;
+	public static void get_EmployeeWageForCompany(String company, int wagePerHour, int workingDaysPerMonth,
+			int maxHours) {
+		int workingHours = 0;
+		int totalWage = 0;
 		int totalDays = 0;
 		int totalHours = 0;
+		int dailyWage = 0;
 
-		while (totalDays < WORKINGDAYS_PER_MONTH && totalHours < TOTALHOURS) {
+		while (totalDays <= workingDaysPerMonth && totalHours < maxHours) {
 			totalDays++;
 
 			int checkWorking = (int) (Math.random() * 3);
@@ -29,17 +28,15 @@ public class EmpWageBuilder {
 			default:
 				workingHours = 0;
 			}
-
-			totalHours = totalHours + workingHours;
+			dailyWage = (wagePerHour * workingHours);
+			System.out.println("Day " + totalDays + " Employee Wage for Company " + company + " is " + dailyWage);
+			totalWage += dailyWage;
 		}
-
-		monthlyWage = (WAGE_PER_HOUR * totalHours);
-		System.out.println("Total Hours:" + totalHours);
-		System.out.println("Monthly Employee Wage:" + monthlyWage);
+		System.out.println("Total Employee Wage for " + company + " is " + totalWage);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Employee Wage Computation");
-		get_EmployeeWage();
+		get_EmployeeWageForCompany("Reliance", 20, 20, 50);
 	}
 }

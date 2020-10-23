@@ -8,13 +8,14 @@ public class EmpWageComputation {
 		final int PARTTIME = 0;
 		final int WORKINGDAYS_PER_MONTH = 20;
 		final int WAGE_PER_HOUR = 20;
+		final int TOTALHOURS = 100;
 
 		int workingHours = 8;
 		int monthlyWage = 0;
 		int totalDays = 0;
 		int totalHours = 0;
 
-		while (totalDays < WORKINGDAYS_PER_MONTH) {
+		while (totalDays < WORKINGDAYS_PER_MONTH && totalHours < TOTALHOURS) {
 			totalDays++;
 
 			int checkWorking = (int) (Math.random() * 3);
@@ -32,7 +33,9 @@ public class EmpWageComputation {
 
 			totalHours = totalHours + workingHours;
 		}
+
 		monthlyWage = (WAGE_PER_HOUR * totalHours);
+		System.out.println("Total Hours:" + totalHours);
 		System.out.println("Monthly Employee Wage:" + monthlyWage);
 	}
 }

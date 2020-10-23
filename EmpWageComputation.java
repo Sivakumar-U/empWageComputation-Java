@@ -8,6 +8,7 @@ public class EmpWageComputation {
 		final int WORKINGDAYS_PER_MONTH = 20;
 		final int WAGE_PER_HOUR = 20;
 		final int TOTALHOURS = 100;
+
 		int workingHours = 8;
 		int monthlyWage = 0;
 		int totalDays = 0;

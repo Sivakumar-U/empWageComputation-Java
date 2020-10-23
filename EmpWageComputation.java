@@ -3,37 +3,18 @@ package empwagecomputation;
 public class EmpWageComputation {
 
 	public static void main(String[] args) {
-		final int FULLTIME = 1;
-		final int PARTTIME = 0;
-		final int WORKINGDAYS_PER_MONTH = 20;
+
+		final int PRESENT = 1;
 		final int WAGE_PER_HOUR = 20;
-		final int TOTALHOURS = 100;
 		int workingHours = 8;
-		int monthlyWage = 0;
-		int totalDays = 0;
-		int totalHours = 0;
+		int dailyWage = 0;
+		int checkPresentOrAbsent = (int) (Math.random() * 2); // check employee present or not using random function
 
-		while (totalDays < WORKINGDAYS_PER_MONTH && totalHours < TOTALHOURS) {
-			totalDays++;
-
-			int checkWorking = (int) (Math.random() * 3);
-
-			switch (checkWorking) {
-			case FULLTIME:
-				workingHours = 8;
-				break;
-			case PARTTIME:
-				workingHours = 4;
-				break;
-			default:
-				workingHours = 0;
-			}
-
-			totalHours = totalHours + workingHours;
+		if (checkPresentOrAbsent == PRESENT) {
+			dailyWage = (WAGE_PER_HOUR * workingHours);
+		} else {
+			dailyWage = 0;
 		}
-
-		monthlyWage = (WAGE_PER_HOUR * totalHours);
-		System.out.println("Total Hours:" + totalHours);
-		System.out.println("Monthly Employee Wage:" + monthlyWage);
+		System.out.println("Daily Employee Wage:" + dailyWage);
 	}
 }
